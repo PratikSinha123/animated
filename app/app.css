@@ -1,15 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  
+  --color-brand-cyan: #e5c158;     /* Gold Sand */
+  --color-brand-indigo: #d97706;   /* Bronze/Amber */
+  --color-brand-violet: #d4af37;   /* Metallic Gold */
+  --color-brand-emerald: #c5a059;  /* Warm Sand */
 }
 
+/* Base resets & styles */
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
+  background-color: #000000;
+  color: #ffffff;
+  overflow-x: hidden;
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: auto; /* Lenis handles smooth scrolling */
+}
 
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
-  }
+/* Hide default scrollbars but keep functional */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.9);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Lenis Integration */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Glassmorphism Styles */
+.glass-card {
+  background: rgba(5, 5, 5, 0.75);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.6);
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.glass-card:hover {
+  background: rgba(10, 10, 10, 0.85);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Custom Gradients and Lights */
+.text-glow {
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(229, 193, 88, 0.2);
+}
+
+.text-glow-dark {
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95), 0 4px 30px rgba(0, 0, 0, 0.95);
+}
+
+.glow-indigo {
+  box-shadow: 0 0 80px -10px rgba(99, 102, 241, 0.4);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 80px -10px rgba(6, 182, 212, 0.4);
+}
+
+/* Text Splitting Layout helper */
+.split-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.split-char {
+  display: inline-block;
+  transform-origin: 50% 100%;
 }
